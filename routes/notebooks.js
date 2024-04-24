@@ -21,11 +21,11 @@ router.get("/:notebook/", function (req, res, next) {
     res.send("NOT IMPLEMENTED YET: Notebook listing (all of his notes) page");
 });
 
-router.get("/:notebook/:note", function (req, res, next) {
+router.get("/:notebook/notes/:note", function (req, res, next) {
     res.send("NOT IMPLEMENTED YET: Note taking main page");
 });
 
-router.get("/:notebook/:note/delete", function (req, res, next) {
+router.get("/:notebook/notes/:note/delete", function (req, res, next) {
     res.send("NOT IMPLEMENTED YET: Note deleting page");
 });
 
