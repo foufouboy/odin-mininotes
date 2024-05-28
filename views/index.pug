@@ -1,5 +1,13 @@
 extends layout
-
+    
 block content
-  h1= title
-  p Welcome to #{title}
+    h2 Dynamic content
+    p The library has the following record counts:
+    ul.dynamic-content-list 
+        li 
+            span Notes:
+            |  5
+        li 
+            span Notebooks:
+            |  10
+

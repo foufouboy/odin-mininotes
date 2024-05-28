@@ -1,9 +1,9 @@
 const express = require("express");
 const router = express.Router();
+const notebook_controller = require("../controllers/notebookController");
+const note_controller = require("../controllers/noteController");
 
-router.get("/", function (req, res, next) {
-    res.send("NOT IMPLEMENTED YET: Notebooks listing page");
-});
+router.get("/", notebook_controller.index);
 
 router.get("/create", function (req, res, next) {
     res.send("NOT IMPLEMENTED YET: Notebook creating page");
@@ -18,7 +18,7 @@ router.get("/:notebook/update", function (req, res, next) {
 });
 
 router.get("/:notebook/", function (req, res, next) {
-    res.send("NOT IMPLEMENTED YET: Notebook listing (all of his notes) page");
+    res.render("notebook_list", {title: "Fake Notebook"});
 });
 
 router.get("/:notebook/notes/:note", function (req, res, next) {

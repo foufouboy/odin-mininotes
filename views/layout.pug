@@ -2,6 +2,42 @@ doctype html
 html
   head
     title= title
+    meta(charset="utf-8")
+    meta(name="viewport", content="width=device-width", initial-scale=1)
     link(rel='stylesheet', href='/stylesheets/style.css')
+    script(src="https://unpkg.com/feather-icons")
   body
-    block content
+    header
+        block header
+            h2=title
+    nav
+        block sidebar
+            a(href="/").title
+                i(data-feather="coffee")
+                h1 Mininotes
+
+            div.menu
+                h3.all-notebooks 
+                    a(href="/notebooks") All Notebooks
+                h3.all-notes
+                    a(href="/notebook/notes") All Notes
+                div.recent-notebooks
+                    h3 Recent Notebooks
+                    ul
+                        each val in ["this", "that", "those", "thus"]
+                            li
+                                i(data-feather="box")
+                                | #{val} 
+                div.recent-notes
+                    h3 Recent Notes
+                    ul
+                        each val in ["this", "that", "those", "thus"]
+                            li
+                                i(data-feather="file-text")
+                                | #{val} 
+    main
+        block content
+            div.main-content
+                p I'm sample main content, and this is a change
+    script.
+        feather.replace();

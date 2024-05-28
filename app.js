@@ -21,7 +21,7 @@ main().catch(err => console.log(err));
 
 async function main() {
     await mongoose.connect(mongoDBUri);
-}
+} 
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
