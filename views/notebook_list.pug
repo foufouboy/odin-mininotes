@@ -1,8 +1,9 @@
 extends layout
     
 block content
-    h2 Notes of #{title}
+    h2.notebook-title Notes of #{title}
     .notes-container
         each val in [1, 2, 3, 4, 5, 6]
-            .note-block
+            a(href="/notebooks/notebook/notes/note").note-block
                 h3 Sample note number #{val}
+                p Description for note number #{val}

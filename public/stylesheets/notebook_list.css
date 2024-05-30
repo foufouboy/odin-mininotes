@@ -1,0 +1,27 @@
+
+.notebook-title {
+    padding: 15px 0;
+}
+.notes-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.note-block {
+    display: flex;
+    flex-flow: column;
+    gap: 5px;
+    background: var(--dark-gray); 
+    padding: 15px;
+    border-radius: 8px;
+    font-size: .8rem;
+}
+
+.note-block h3 {
+    font-size: 1.1rem;
+}
+
+.note-block p {
+    color: rgb(255, 255, 255, .6);
+}

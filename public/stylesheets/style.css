@@ -1,5 +1,6 @@
 /* IMPORT AND SET-UPING*/
 
+@import "./notebook_list.css";
 @import url('https://fonts.googleapis.com/css2?family=Reddit+Mono:wght@200..900&display=swap');
 
 :root {
@@ -127,5 +128,5 @@ nav .menu ul li:hover {
 
 main {
     background-color: var(--light-black);
-    padding-left: 30px;
+    padding: 0 30px;
 }
