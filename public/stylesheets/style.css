@@ -1,6 +1,7 @@
 /* IMPORT AND SET-UPING*/
 
 @import "./notebook_list.css";
+@import "./note_edit.css";
 @import url('https://fonts.googleapis.com/css2?family=Reddit+Mono:wght@200..900&display=swap');
 
 :root {

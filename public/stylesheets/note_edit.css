@@ -1,0 +1,56 @@
+#editor-container {
+    font-size: 1.2rem;
+    background: rgb(0, 0, 0, .5); 
+    border-radius: 8px;
+    border: 2px solid var(--border-gray);
+    padding: 10px 20px;
+}
+
+#editor-container .ce-inline-toolbar svg
+{
+    color: black
+}
+
+#editor-container .ce-toolbar__actions svg {
+    color: white;
+}
+
+#editor-container .ce-toolbar__content  {
+    max-width: 100%;
+}
+
+#editor-container .ce-toolbar__actions {
+    right: -20px;
+}
+
+#editor-container .ce-toolbar__plus:hover svg {
+    color: black;
+}
+
+#editor-container .ce-popover-item svg {
+    color: black;
+}
+
+#editor-container .codex-editor ::selection {
+    background: blue;
+}
+
+#editor-container .ce-block__content {
+    margin: 0;
+    max-width: 100%;
+    word-break: break-all;
+    hyphens: auto;
+}
+
+#editor-container .ce-popover {
+    left: auto;
+    right: 10px;
+}
+
+#editor-container .ce-paragraph {
+    line-height: 1.1rem;
+}
+
+#editor-container .ce-header {
+    padding: 3px 0;
+}

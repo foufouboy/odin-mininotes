@@ -6,6 +6,10 @@ html
     meta(name="viewport", content="width=device-width", initial-scale=1)
     link(rel='stylesheet', href='/stylesheets/style.css')
     script(src="https://unpkg.com/feather-icons")
+    script(src="https://cdn.jsdelivr.net/npm/@editorjs/editorjs@latest")
+    script(src="https://cdn.jsdelivr.net/npm/@editorjs/header@latest")
+    script(src="https://cdn.jsdelivr.net/npm/@editorjs/list@latest")
+    script(src="/javascripts/note-editor.js" defer)
   body
     header
         block header
@@ -16,7 +20,7 @@ html
                 i(data-feather="coffee")
                 h1 Mininotes
 
-            div.menu
+            .menu
                 h3.all-notebooks 
                     a(href="/notebooks") All Notebooks
                 h3.all-notes
@@ -28,13 +32,20 @@ html
                             li
                                 i(data-feather="box")
                                 | #{val} 
-                div.recent-notes
+                .recent-notes
                     h3 Recent Notes
                     ul
                         each val in ["this", "that", "those", "thus"]
                             li
                                 i(data-feather="file-text")
                                 | #{val} 
+
+                .testing-links
+                    ul
+                        if testing_links
+                            each linkVal in testing_links
+                                li
+                                    a(href=linkVal) #{linkVal}
     main
         block content
             div.main-content
