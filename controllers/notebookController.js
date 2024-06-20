@@ -1,9 +1,28 @@
+const asyncHandler = require("express-async-handler");
+const Notebook = require("../models/Notebook");
+const Note = require("../models/Note");
 
-// TODO
+exports.index = asyncHandler(async (req, res, next) => {
+    const allNotebooks = await Notebook.find({}, "name desc")
+        .sort({name: 1})
+        .exec();
 
-exports.index = (req, res, next) => {
-    res.redirect("/");
-}
+    console.log(allNotebooks);
+
+    res.render("index", {
+        title: 'Home',
+        notebooks: allNotebooks,
+        testing_links: [
+            "/notebooks/create",
+            "/notebooks/notebook/delete",
+            "/notebooks/notebook/update",
+            "/notebooks/notebook/",
+            "/notebooks/notebook/notes/note",
+            "/notebooks/notebook/notes/note/delete",
+            "/notebooks/notebook/new-note",
+        ],
+    });
+});
 
 exports.notebook_create_get = (req, res, next) => {
     res.render("notebook_form", {});

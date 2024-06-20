@@ -1,6 +1,11 @@
+.notebooks-hero {
+    display: flex;
+    flex-flow: column;
+    gap: 20px;
 
+}
 .notebook-title {
-    padding: 15px 0;
+    margin-top: 15px;
 }
 .notes-container {
     display: grid;
@@ -8,14 +13,39 @@
     gap: 20px;
 }
 
+button.create-notebook {
+    background: black;
+    border: 2px solid var(--main-bluey);
+    color: inherit;
+    font-family: inherit;
+    outline: none;
+    font-size: 1.1rem;
+    font-weight: bold;
+    padding: 15px 20px;
+    border-radius: 8px;
+    align-self: flex-start;
+    transition: background-color .2s ease-in;
+}
+
+button.create-notebook:hover {
+    background-color: var(--main-bluey);
+    cursor: pointer;
+}
+
 .note-block {
     display: flex;
     flex-flow: column;
     gap: 5px;
     background: var(--dark-gray); 
-    padding: 15px;
+    border: transparent 3px solid; 
+    padding: 13px;
     border-radius: 8px;
     font-size: .8rem;
+    transition: border .2s;
+}
+
+.note-block:hover {
+    border: 3px solid var(--main-bluey);
 }
 
 .note-block h3 {

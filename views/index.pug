@@ -1,13 +1,12 @@
 extends layout
     
 block content
-    h2 Dynamic content
-    p The library has the following record counts:
-    ul.dynamic-content-list 
-        li 
-            span Notes:
-            |  5
-        li 
-            span Notebooks:
-            |  10
+    .notebooks-hero
+        h2.notebook-title Notebooks
+        .notes-container
+            each notebook in notebooks
+                a(href=`/notebooks/${notebook._id}/`).note-block
+                    h3 #{notebook.name}
+                    p #{notebook.desc}
+        button.create-notebook + New Notebook
 
