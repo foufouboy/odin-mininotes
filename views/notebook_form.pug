@@ -1,5 +1,12 @@
 extends layout
     
 block content
-    h2.notebook-title #{title}
+    form.notebook-form(method="POST" action="./create")
+        .title-input
+            label(for="title") Title
+            input#title(name="title")
+        .desc-input
+            label(for="title") Description
+            textarea#title(name="title")
+        button.default(type="submit") Submit
 

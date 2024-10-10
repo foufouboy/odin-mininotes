@@ -4,16 +4,22 @@
     gap: 20px;
 
 }
+
 .notebook-title {
     margin-top: 15px;
 }
+
 .notes-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 20px;
 }
 
-button.create-notebook {
+a.create-notebook-link {
+    display: inline-block;
+}
+
+button.default {
     background: black;
     border: 2px solid var(--main-bluey);
     color: inherit;
@@ -27,7 +33,7 @@ button.create-notebook {
     transition: background-color .2s ease-in;
 }
 
-button.create-notebook:hover {
+button.default:hover {
     background-color: var(--main-bluey);
     cursor: pointer;
 }

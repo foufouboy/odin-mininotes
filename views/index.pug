@@ -8,5 +8,6 @@ block content
                 a(href=`/notebooks/${notebook._id}/`).note-block
                     h3 #{notebook.name}
                     p #{notebook.desc}
-        button.create-notebook + New Notebook
+        a.create-notebook-link(href="/notebooks/create") 
+            button.default + New Notebook
 

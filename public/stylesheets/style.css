@@ -2,6 +2,7 @@
 
 @import "./notebook_list.css";
 @import "./note_edit.css";
+@import "./notebook_form.css";
 @import url('https://fonts.googleapis.com/css2?family=Reddit+Mono:wght@200..900&display=swap');
 
 :root {
@@ -130,4 +131,33 @@ nav .menu ul li:hover {
 main {
     background-color: var(--light-black);
     padding: 0 30px;
+}
+
+input, textarea {
+    background: rgb(0, 0, 0, .5);
+    border-radius: 8px;
+    border: 2px solid var(--border-gray);
+    padding: 10px 15px;
+    color: inherit;
+    font-family: inherit;
+    outline: none;
+}
+
+button.default {
+    background: black;
+    border: 2px solid var(--main-bluey);
+    color: inherit;
+    font-family: inherit;
+    outline: none;
+    font-size: 1.1rem;
+    font-weight: bold;
+    padding: 15px 20px;
+    border-radius: 8px;
+    align-self: flex-start;
+    transition: background-color .2s ease-in;
+}
+
+button.default:hover {
+    background-color: var(--main-bluey);
+    cursor: pointer;
 }

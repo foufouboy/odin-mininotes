@@ -1,0 +1,26 @@
+
+.notebook-form {
+    padding: 30px 10px;
+    display: flex;
+    flex-flow: column;
+    width: 400px;
+    gap: 15px;
+}
+
+.notebook-form label {
+    margin: 0 10px 10px 0;
+    display: block;
+}
+
+.notebook-form .title-input input {
+    width: 300px;
+}
+
+.notebook-form textarea {
+    width: 300px;
+    height: 100px;
+}
+
+.notebook-form button[type="submit"] {
+    width: 300px;
+}

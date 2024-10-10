@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
+    "test": "NODE_ENV=test && jest --runInBand --forceExit",
     "start": "node ./bin/www",
     "devstart": "nodemon ./bin/www",
     "serverstart": "DEBUG=odin-mininotes:* npm run devstart"
@@ -16,8 +17,9 @@
     "express-validator": "^7.0.1",
     "feather-icons": "^4.29.2",
     "http-errors": "~1.6.3",
-    "mongoose": "^8.3.2",
+    "jest": "^29.7.0",
     "morgan": "~1.9.1",
+    "pg": "^8.13.0",
     "pug": "2.0.0-beta11"
   },
   "devDependencies": {

@@ -1,15 +1,22 @@
-const mongoose = require("mongoose");
+const pool = require("./Pool");
 
-const Schema = mongoose.Schema;
+class NotebookStorage {
 
-const NotebookSchema = new Schema({
-    name: { type: String, required: true, maxlength: 100},
-    notes: [{ type: Schema.Types.ObjectId, ref: "Note"}],
-    desc: { type: String, required: true, maxlength: 100} 
-}, {collection: "notebooks"});
+    #pool;
 
-NotebookSchema.virtual("url").get(function() {
-    return `NOT IMPLEMENTED YET`;  
-});
+    constructor() {
+        this.#pool = pool;
+    }
 
-module.exports = mongoose.model("Notebook", NotebookSchema);
+    getAllNotebooks() {}
+
+    getNotebook(id) {}
+    
+    createNotebook({title, description}) {}
+
+    updateNotebook(id, {title, description}) {}
+
+    deleteNotebook(id) {}
+}
+
+module.exports = new NotebookStorage();
