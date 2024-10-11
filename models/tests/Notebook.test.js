@@ -28,13 +28,13 @@ beforeEach(() => {
 
 afterEach(() => {
     testClient.end();
-})
+});
 
 describe("Notebook model is working as expected", () => {
     test(".getAllNotebooks should do so", async () => {
         expect(notebookStorage.getAllNotebooks).toBeDefined();
 
-        const notebooks = notebookStorage.getAllNotebooks();
+        const notebooks = await notebookStorage.getAllNotebooks();
 
         expect(notebooks).toBeInstanceOf(Array);
         expect(notebooks[0].title).toEqual("Personal");
@@ -46,7 +46,7 @@ describe("Notebook model is working as expected", () => {
         const notebook = await notebookStorage.getNotebook(1);
 
         expect(notebook.title).toBeDefined();
-        expect(notebook.desc).toBeDefined();
+        expect(notebook.description).toBeDefined();
 
     }); 
 
@@ -59,7 +59,7 @@ describe("Notebook model is working as expected", () => {
                 return result.rows.length;
             });
 
-        notebookStorage.createNotebook({...newNotebook});
+        await notebookStorage.createNotebook({...newNotebook});
 
         const newTableLength = await testClient
             .query("SELECT * FROM notebooks")
@@ -88,31 +88,40 @@ describe("Notebook model is working as expected", () => {
             description: "An updated description",
         }
 
-        await noteStorage.updateNotebook(id, updatedNotebook);
+        await notebookStorage.updateNotebook(id, updatedNotebook);
 
         await testClient
             .query("SELECT * FROM notebooks WHERE id = $1", [id])
             .then(result => {
-                expect(result.rows[0].content).toEqual(updatedNotebook.content);
+                expect(result.rows[0].description).toEqual(updatedNotebook.description);
             });
        
         await testClient.deleteTestNotebook();
-    })
+    });
 
-    }); 
-
-    test(".deleteNotebook should delete a notebook with the specified id", async () => {
+    test(".deleteNotebook should delete a notebook AND its notes", async () => {
         expect(notebookStorage.deleteNotebook).toBeDefined();
 
         await testClient.insertTestNotebook();
-        const id = testClient.getTestNotebookID();
+        const id = await testClient.getTestNotebookID();
 
-        notebookStorage.deleteNotebook(id);
+        await testClient.query(
+            "INSERT INTO notes (title, content, notebook_id) VALUES ($1, $2, $3)",
+            ["Test title", "test content", id],
+        );
+
+        await notebookStorage.deleteNotebook(id);
 
         await testClient
             .query("SELECT * FROM notebooks WHERE id = $1", [id])
             .then(result => {
                 expect(result.rows.length).toEqual(0);
             });
+        
+        await testClient
+            .query("SELECT * FROM notes WHERE notebook_id = $1", [id])
+            .then(result => {
+                expect(result.rows.length).toEqual(0);
+            });
     }); 
-});
+}); 

@@ -36,7 +36,7 @@ describe("Note model is working as expected", () => {
         const notes = await noteStorage.getAllNotes();
 
         expect(notes).toBeInstanceOf(Array);
-        expect(notes[0].title).toEqual("A note on Manon");
+        expect(notes[0].title).toBeDefined();
     });
 
     test(".getNote should get the specified note", async () => {

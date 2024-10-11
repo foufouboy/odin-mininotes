@@ -33,9 +33,9 @@ class TestClient extends Client {
     }
 
     async insertTestNotebook() {
-        const {title, desc} = this.defaultNotebook;
+        const {title, description} = this.defaultNotebook;
 
-        await this.query("INSERT INTO notebooks (title, description) VALUES ($1, $2)", [title, desc]);
+        await this.query("INSERT INTO notebooks (title, description) VALUES ($1, $2)", [title, description]);
     }
 
     async deleteTestNotebook() {
@@ -43,8 +43,8 @@ class TestClient extends Client {
     }
 
     async getTestNotebookID() {
-        const id = await testClient
-            .query("SELECT * FROM notebooks WHERE description = $1 LIMIT 1", [newNotebook.description])
+        const id = await this
+            .query("SELECT * FROM notebooks WHERE description = $1 LIMIT 1", [this.defaultNotebook.description])
             .then(result => {
                 return result.rows[0].id;
             });
