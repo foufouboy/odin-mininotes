@@ -5,9 +5,9 @@ block content
         h2.notebook-title Notebooks
         .notes-container
             each notebook in notebooks
-                a(href=`/notebooks/${notebook._id}/`).note-block
-                    h3 #{notebook.name}
-                    p #{notebook.desc}
+                a(href=`/notebooks/${notebook.id}/`).note-block
+                    h3 #{notebook.title}
+                    p #{notebook.description}
         a.create-notebook-link(href="/notebooks/create") 
             button.default + New Notebook
 

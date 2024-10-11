@@ -104,4 +104,17 @@ describe("Note model is working as expected", () => {
        
         await testClient.deleteTestNotes();
     })
+
+    test(".getNotesFromNotebook should retrieve notes from the specified notebook", async () => {
+        expect(noteStorage.getNotesFromNotebook).toBeDefined();
+
+        await testClient.insertTestNotes();
+        
+        const notesFromNotebook = await noteStorage.getNotesFromNotebook(1);
+
+        expect(notesFromNotebook).toBeDefined();
+        expect(notesFromNotebook).toBeInstanceOf(Array);
+        expect(notesFromNotebook.every((note) => note.notebook_id === 1)).toBeTruthy();
+
+    })
 });

@@ -13,6 +13,14 @@ class NoteStorage {
         return rows;
     }
 
+    async getNotesFromNotebook(id) {
+        const { rows } = await this.#pool.query(
+            "SELECT * FROM notes WHERE notebook_id = $1", [id]
+        );
+
+        return rows;
+    }
+
     async createNote(title, content, tags, notebookID) {
         tags = this.#formatArray(tags);
 
@@ -27,14 +35,7 @@ class NoteStorage {
         return rows[0];
     }
 
-    async updateNote(id, noteUpdated) {
-        const {
-            title,
-            content,
-            tags,
-            notebookID
-        } = noteUpdated;
-
+    async updateNote(id, {title, content, tags, notebookID}) {
         const formatedTags = this.#formatArray(tags);
 
         await this.#pool.query(`
@@ -57,10 +58,5 @@ class NoteStorage {
         return `{${arr.join(", ")}}`;
     }
 }
-
-const main = async () => {
-}
-
-main();
 
 module.exports = new NoteStorage();

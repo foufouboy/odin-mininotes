@@ -1,8 +1,9 @@
-var express = require('express');
-var router = express.Router();
-const notebook_controller = require("../controllers/notebookController");
+const { Router } = require('express');
+const notebookController = require("../controllers/notebookController");
+
+const router = Router();
 
 /* GET home page. */
-router.get('/', notebook_controller.index);
+router.get('/', notebookController.notebooksIndexGet);
 
 module.exports = router;

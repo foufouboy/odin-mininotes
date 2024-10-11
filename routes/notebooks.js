@@ -1,37 +1,26 @@
-const express = require("express");
-const router = express.Router();
-const notebook_controller = require("../controllers/notebookController");
-const note_controller = require("../controllers/noteController");
+const { Router } = require("express");
+const notebookController = require("../controllers/notebookController");
+const notesRouter = require("./notes");
 
-router.get("/", notebook_controller.index);
+const router = Router();
 
-router.get("/create", function (req, res, next) {
-    res.render("notebook_form", {title: "Create a notebook"});
+router.get("/", (req, res) => {
+    res.redirect("/");
 });
 
-router.get("/:notebook/delete", function (req, res, next) {
-    res.render("notebook_delete", {title: "Delete a notebook"});
-});
+router.get("/create", notebookController.notebookCreateGet);
+router.post("/create", notebookController.notebookCreatePost);
 
-router.get("/:notebook/update", function (req, res, next) {
-    res.render("notebook_form", {title: "Update a notebook"});
-});
+router.get("/:notebook/delete", notebookController.notebookDeleteGet);
+router.post("/:notebook/delete", notebookController.notebookDeletePost);
 
-router.get("/:notebook/", function (req, res, next) {
-    res.render("notebook_list", {title: "Fake Notebook"});
-});
+router.get("/:notebook/update", notebookController.notebookUpdateGet);
+router.post("/:notebook/update", notebookController.notebookUpdatePost);
 
-router.get("/:notebook/notes/:note", function (req, res, next) {
-    res.render("note_edit", {title: "Edit a Note"});
-});
+router.get("/:notebook/", notebookController.notebookList);
 
-router.get("/:notebook/notes/:note/delete", function (req, res, next) {
-    res.render("note_delete", {title: "Delete a Note"});
-});
+router.use("/:notebook/notes/", notesRouter);
 
-router.get("/:notebook/new-note", function (req, res, next) {
-    res.render("note_edit", {title: "Create a new Note"});
-});
 
 module.exports = router;
 

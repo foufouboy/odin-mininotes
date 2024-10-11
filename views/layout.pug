@@ -39,13 +39,6 @@ html
                             li
                                 i(data-feather="file-text")
                                 | #{val} 
-
-                .testing-links
-                    ul
-                        if testing_links
-                            each linkVal in testing_links
-                                li
-                                    a(href=linkVal) #{linkVal}
     main
         block content
             div.main-content

@@ -5,7 +5,7 @@
   "scripts": {
     "test": "NODE_ENV=test && jest --runInBand --forceExit",
     "start": "node ./bin/www",
-    "devstart": "nodemon ./bin/www",
+    "devstart": "nodemon ./bin/www --trace-warnings",
     "serverstart": "DEBUG=odin-mininotes:* npm run devstart"
   },
   "dependencies": {
