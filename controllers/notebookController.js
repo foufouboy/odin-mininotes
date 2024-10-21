@@ -5,10 +5,13 @@ const noteStorage = require("../models/Note");
 exports.notebooksIndexGet = asyncHandler(async (req, res) => {
     const notebooks = await notebookStorage.getAllNotebooks();
 
-    res.send("Index page");
+    res.render("index", {
+        notebooks: notebooks,
+    });
 });
 
 exports.notebookCreateGet = (req, res) => {
+    res.render("notebook_form");
 }
 
 exports.notebookCreatePost = (req, res) => {
@@ -17,9 +20,15 @@ exports.notebookCreatePost = (req, res) => {
     // sinon, on renverra ici (notebook_form) avec les erreurs.
 }
 
-exports.notebookUpdateGet = (req, res) => {
+exports.notebookUpdateGet = asyncHandler( async (req, res) => {
+    const id = req.params.notebook;
+    const notebook = await notebookStorage.getNotebook(id);
 
-}
+    res.render("notebook_form", {
+        notebook: notebook,
+    });
+});
+
 
 exports.notebookUpdatePost = (req, res) => {
     // Ici si tout se passe bien au niveau de la validation
@@ -27,18 +36,22 @@ exports.notebookUpdatePost = (req, res) => {
     // sinon, on renverra ici (notebook_form) avec les erreurs.
 }
 
-exports.notebookDeleteGet = (req, res) => {
-}
+exports.notebookDeletePost = asyncHandler( async (req, res) => {
+    const id = req.params.notebook;
+    await notebookStorage.deleteNotebook(id);
+    res.redirect("/");
+});
 
-exports.notebookDeletePost = (req, res) => {
-    // Ici si tout se passe bien au niveau de la validation
-    // on renverra vers index
-    // sinon, on renverra ici (notebookDelete)avec les erreurs.
-}
+exports.notebookList = asyncHandler(async (req, res) => {
+    const id = req.params.notebook;
+    const notebook = await notebookStorage.getNotebook(id);
+    const notes = await noteStorage.getNotesFromNotebook(id);
 
-exports.notebookList = (req, res) => {
-    res.render("notebook_list", {});
-}
+    res.render("notebook_list", {
+        notes: notes,
+        notebook: notebook,
+    });
+})
 
 
 

@@ -10,6 +10,7 @@ html
     script(src="https://cdn.jsdelivr.net/npm/@editorjs/header@latest")
     script(src="https://cdn.jsdelivr.net/npm/@editorjs/list@latest")
     script(src="/javascripts/note-editor.js" defer)
+    block scripts
   body
     header
         block header
@@ -21,10 +22,10 @@ html
                 h1 Mininotes
 
             .menu
-                h3.all-notebooks 
-                    a(href="/notebooks") All Notebooks
-                h3.all-notes
-                    a(href="/notebooks/notebook/notes/note") All Notes
+                h3.create-note
+                    a(href="/notebooks/new-note") New note
+                h3.create-notebook
+                    a(href="/notebooks/create") New notebook
                 div.recent-notebooks
                     h3 Recent Notebooks
                     ul

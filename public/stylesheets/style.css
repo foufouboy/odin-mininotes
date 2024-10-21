@@ -103,7 +103,11 @@ nav .menu > h3:hover {
     text-underline-offset: 3px;
 }
 
-.all-notes {
+.create-note {
+    margin-top: 15px;
+}
+
+.create-notebook {
     margin-bottom: 15px;
 }
 
@@ -160,4 +164,26 @@ button.default {
 button.default:hover {
     background-color: var(--main-bluey);
     cursor: pointer;
+}
+
+.default-modal {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgb(0, 0, 0, .2);
+    display: none;
+    align-items: center;
+    justify-content: center;
+}
+
+.default-modal .pop-up {
+    background: var(--dark-gray);
+    padding: 25px;
+    border-radius: 10px;
+}
+
+.default-modal.active {
+    display: flex;
 }

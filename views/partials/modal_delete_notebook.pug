@@ -1,0 +1,15 @@
+extends modal 
+
+block content
+    .delete-notebook-container
+        h2 Are you sure you want to delete this notebook ?
+        p The 
+            i #{notebook.title} 
+            | notebook includes the following notes, that will be deleted too :
+        ul.notes-to-delete
+            each note in notes
+                li=note.title
+        .delete-notebook-options
+            form(method="POST" action=`/notebooks/${notebook.id}/delete`) 
+                button.delete-notebook(type="submit") Yes
+            button Cancel

@@ -4,9 +4,13 @@ block content
     form.notebook-form(method="POST" action="./create")
         .title-input
             label(for="title") Title
-            input#title(name="title")
+            input#title(
+                required 
+                name="title" 
+                value=(notebook ? notebook.title : "")
+                minlength="5" maxlength="50")
         .desc-input
             label(for="title") Description
-            textarea#title(name="title")
+            textarea#title(name="title")=(notebook ? notebook.description : "")
         button.default(type="submit") Submit
 

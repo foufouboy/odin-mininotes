@@ -11,7 +11,6 @@ exports.noteCreatePost = (req, res) => {
 }
 
 exports.noteUpdateGet = (req, res) => {
-
 }
 
 exports.noteUpdatePost = (req, res) => {

@@ -6,7 +6,7 @@
 }
 
 .notebook-title {
-    margin-top: 15px;
+    margin: 15px 0;
 }
 
 .notes-container {
@@ -15,8 +15,60 @@
     gap: 20px;
 }
 
+.notebook-options {
+    margin-bottom: 15px;
+    display: flex;
+    gap: 20px;
+
+}
+
+.notebook-options button {
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: bold;
+    border-radius: 5px;
+    border: 0;
+    transition: 
+        background .2s ease-in-out,
+        color .2s ease-in-out; 
+    cursor: pointer;
+}
+
+button.update-notebook > a,
+button.delete-notebook {
+    padding: 5px 8px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.notebook-options button svg {
+    width: 18px;
+}
+
+button.delete-notebook {
+    background: crimson;
+    color: white;
+}
+
+button.delete-notebook:hover {
+    background: white;
+    color: crimson;
+}
+
+button.update-notebook {
+    background: var(--dark-gray);
+    color: white;
+}
+
+button.update-notebook:hover {
+    background: white;
+    color: var(--dark-gray);
+}
+
 a.create-notebook-link {
-    display: inline-block;
+    display: inline-block; 
 }
 
 button.default {
@@ -61,3 +113,47 @@ button.default:hover {
 .note-block p {
     color: rgb(255, 255, 255, .6);
 }
+
+.delete-notebook-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.delete-notebook-container p {
+    margin-bottom: 10px;
+}
+
+ul.notes-to-delete {
+    list-style: square inside;
+}
+
+ul.notes-to-delete li {
+    font-style: italic;
+}
+
+.delete-notebook-options {
+    align-self: center;
+    display: flex;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.delete-notebook-options button {
+    padding: 5px 12px;
+    font-family: inherit;
+    font-weight: bold;
+    font-size: 1.1rem;
+    border: 0;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color .2s ease-in;
+}
+
+.delete-notebook-options button:nth-child(2) {
+    background: var(--light-black);
+    color: white;
+}
+
+.delete-notebook-options button:nth-child(2):hover {
+    background: white;
+    color: var(--light-black);
