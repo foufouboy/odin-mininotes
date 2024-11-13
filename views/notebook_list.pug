@@ -14,9 +14,14 @@ block content
             a(href=`/notebooks/${notebook.id}/update/`)
                 i(data-feather="edit-3")
                 | Edit
+        button.new-note.default 
+            a(href=`/notebooks/new-note?notebook=${notebook.id}`) + New note
     .notes-container
         each note in notes
-            a(href="/notebooks/notebook/notes/note").note-block
-                h3=note.title
-                p=note.content
-    include partials/modal_delete_notebook.pug
+            a(href=`/notebooks/${notebook.id}/notes/${note.id}`).note-block
+                h3 !{note.title}
+                p !{note.excerpt}
+    if isLastNotebook
+        include partials/modal_last_notebook.pug
+    else 
+        include partials/modal_delete_notebook.pug

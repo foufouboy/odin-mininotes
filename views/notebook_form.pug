@@ -1,7 +1,9 @@
 extends layout
     
 block content
-    form.notebook-form(method="POST" action="./create")
+    if errors
+        include partials/validation_error.pug
+    form.notebook-form(method="POST" action="")
         .title-input
             label(for="title") Title
             input#title(
@@ -10,7 +12,7 @@ block content
                 value=(notebook ? notebook.title : "")
                 minlength="5" maxlength="50")
         .desc-input
-            label(for="title") Description
-            textarea#title(name="title")=(notebook ? notebook.description : "")
+            label(for="description") Description
+            textarea#description(name="description" maxlength="250")=(notebook ? notebook.description : "")
         button.default(type="submit") Submit
 

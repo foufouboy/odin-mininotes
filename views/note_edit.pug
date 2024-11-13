@@ -1,6 +1,52 @@
 extends layout
+
+block scripts 
+    script. 
+        let data = `!{note ? note.data : ""}`;
+    script(src="https://cdn.jsdelivr.net/npm/@editorjs/editorjs@latest")
+    script(src="https://cdn.jsdelivr.net/npm/@editorjs/header@latest")
+    script(src="https://cdn.jsdelivr.net/npm/@editorjs/list@latest")
+    script(src="/javascripts/note-editor.js" defer)
+
     
 block content
-    h2.notebook-title #{title}
-    #editor-container
+    if errors
+        include partials/validation_error.pug
+    form.note(action="" method="POST")
+        .note-title
+            label(for="title") Title
+            input#note-title(
+                name="title" 
+                required 
+                minlength="5" 
+                maxlength="50" 
+                value!=(note ? note.title : "")
+            )
+        label(for="editor-container") Content
+        #editor-container
+        .note-tags
+            label(for="tags") Tags 
+                br
+                | (should be separated values, for ex. "tag1, tag2, tag3")
+            input#note-tags(
+                name="tags" 
+                pattern="[a-zA-Z0-9 ,]+" 
+                maxlength="100" 
+                value=(note ? note.tags : "")
+            )
+        .note-notebook 
+            label(for="notebookID") Notebook
+            select#note-notebook(name="notebookID")
+                each notebook in notebooks
+                    option(
+                        value=notebook.id 
+                        selected=(defaultNotebook == notebook.id ? "" : undefined)
+                    )=notebook.title
+        .note-options
+            button.default.note-submit(type="submit") Save
+            if note
+                button.default.delete-note(type="button") Delete
+    if note
+        include partials/modal_delete_note.pug
+
 

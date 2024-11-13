@@ -3,18 +3,20 @@ html
   head
     title= title
     meta(charset="utf-8")
-    meta(name="viewport", content="width=device-width", initial-scale=1)
+    meta(name="viewport", content="width=device-width, initial-scale=1")
     link(rel='stylesheet', href='/stylesheets/style.css')
     script(src="https://unpkg.com/feather-icons")
-    script(src="https://cdn.jsdelivr.net/npm/@editorjs/editorjs@latest")
-    script(src="https://cdn.jsdelivr.net/npm/@editorjs/header@latest")
-    script(src="https://cdn.jsdelivr.net/npm/@editorjs/list@latest")
-    script(src="/javascripts/note-editor.js" defer)
     block scripts
   body
     header
         block header
-            h2=title
+            button.prec(
+                title="Go back to previous page"
+                onclick="javascript:history.back()"
+            ) 
+                i(data-feather="arrow-left-circle")
+            button.burger-menu
+                i(data-feather="menu")
     nav
         block sidebar
             a(href="/").title
@@ -22,6 +24,8 @@ html
                 h1 Mininotes
 
             .menu
+                h3 
+                    a(href="/notebooks") All Notebooks 
                 h3.create-note
                     a(href="/notebooks/new-note") New note
                 h3.create-notebook
@@ -29,20 +33,38 @@ html
                 div.recent-notebooks
                     h3 Recent Notebooks
                     ul
-                        each val in ["this", "that", "those", "thus"]
+                        each val in ["Feature", "to", "implement"]
                             li
                                 i(data-feather="box")
-                                | #{val} 
+                                | #{val}
                 .recent-notes
                     h3 Recent Notes
                     ul
-                        each val in ["this", "that", "those", "thus"]
+                        each val in ["Feature", "to", "implement"]
                             li
-                                i(data-feather="file-text")
-                                | #{val} 
+                                i(data-feather="box")
+                                | #{val}
     main
         block content
             div.main-content
                 p I'm sample main content, and this is a change
     script.
+        const burger = document.querySelector("button.burger-menu");
+        const nav = document.querySelector("nav");
+
+        if (burger) {
+
+            burger.addEventListener("click", (e) => {
+                e.stopPropagation();
+                nav.classList.toggle("active");
+            });
+
+            document.body.addEventListener("click", (e) => {
+                if (nav.classList.contains("active") && !(nav.contains(e.target))) {
+                    nav.classList.remove("active");
+                }
+            })
+        }
+
         feather.replace();
+

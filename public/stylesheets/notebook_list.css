@@ -157,3 +157,15 @@ ul.notes-to-delete li {
 .delete-notebook-options button:nth-child(2):hover {
     background: white;
     color: var(--light-black);
+}
+
+.last-notebook {
+    display: flex;
+    flex-flow: column;
+    align-items: center;    
+    text-align: center;
+}
+
+button.default.new-note {
+    padding: 5px 15px ;
+}

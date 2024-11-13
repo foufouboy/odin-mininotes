@@ -38,8 +38,8 @@
 #editor-container .ce-block__content {
     margin: 0;
     max-width: 100%;
-    word-break: break-all;
     hyphens: auto;
+    word-break: break-word;
 }
 
 #editor-container .ce-popover {
@@ -53,4 +53,142 @@
 
 #editor-container .ce-header {
     padding: 3px 0;
+}
+
+#editor-container .codex-editor__redactor {
+    padding-bottom: 0 !important;
+}
+
+/* PAGE RELATED */
+
+form.note {
+    display: flex;
+    flex-flow: column;
+    padding: 15px 0;
+    gap: 15px;
+}
+
+form.note > div {
+    display: flex;
+    flex-flow: column;
+    gap: 10px;
+}
+
+form.note select {
+    /* styling */
+    background-color: rgb(0, 0, 0, .5);
+    color: white;
+    border: 2px solid var(--border-gray);
+    border-radius: 8px;
+    display: inline-block;
+    font: inherit;
+    line-height: 1.5em;
+    padding: 0.5em 3.5em 0.5em 1em;
+  
+    /* reset */
+  
+    margin: 0;      
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+
+    /* arrow */
+
+    background-image:
+    linear-gradient(45deg, transparent 50%, black 50%),
+    linear-gradient(135deg, black 50%, transparent 50%),
+    linear-gradient(to right, var(--border-gray), var(--border-gray));
+    background-position:
+    calc(100% - 20px) calc(1em + 2px),
+    calc(100% - 15px) calc(1em + 2px),
+    100% 0;
+    background-size:
+    5px 5px,
+    5px 5px,
+    2.5em 2.5em;
+    background-repeat: no-repeat;
+}
+
+select:focus {
+    outline: none;
+}
+
+option:not(:checked) {
+    background: rgb(0, 0, 0, .5);
+}
+
+label {
+    opacity: .5;
+    font-style: italic;
+}
+
+.note-title input {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+form.note .note-options {
+    display: flex;
+    flex-flow: row;
+}
+
+button.default.delete-note {
+    background-color: crimson;
+    border: none;
+    align-self: center;
+}
+
+button.default.delete-note:hover {
+    background-color: white;
+    color: crimson;
+    border-color: white;
+}
+
+.delete-note-container button.default.delete-note {
+    padding: 8px 20px;
+}
+
+.delete-note-options {
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+}
+
+.delete-note-options button:nth-child(2) {
+    background: var(--light-black);
+    color: white;
+    font-weight: bold;
+    font-family: inherit;
+    border: none;
+    padding: 10px 20px;
+    font-size: inherit;
+    border-radius: 8px;
+}
+
+.delete-note-options button:nth-child(2):hover {
+    background: white;
+    color: var(--light-black);
+}
+
+@media screen and (max-width: 750px) {
+    #editor-container .ce-paragraph {
+        font-size: 1rem;
+    }
+
+    #editor-container .ce-header {
+        font-size: 1.4rem;
+    }
+
+    #editor-container .cdx-list__item {
+        font-size: 1rem;
+        padding: 0;
+    }
+
+    #editor-container .ce-toolbar__actions svg {
+        color: black;
+    }
 }

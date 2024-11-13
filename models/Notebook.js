@@ -20,6 +20,12 @@ class NotebookStorage {
         
         return notebook;
     }
+
+    async getLastNotebook() {
+        const { rows } = await this.#pool.query("SELECT * FROM notebooks ORDER BY id DESC LIMIT 1");
+
+        return !rows.length ? null : rows[0];
+    }
     
     async createNotebook({title, description}) {
         await this.#pool.query(

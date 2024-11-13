@@ -15,6 +15,8 @@ router.post("/create", notebookController.notebookCreatePost);
 router.get("/new-note", noteController.noteCreateGet);
 router.post("/new-note", noteController.noteCreatePost);
 
+router.get("/success", notebookController.success);
+
 router.post("/:notebook/delete", notebookController.notebookDeletePost);
 
 router.get("/:notebook/update", notebookController.notebookUpdateGet);
@@ -23,7 +25,7 @@ router.post("/:notebook/update", notebookController.notebookUpdatePost);
 router.get("/:notebook/", notebookController.notebookList);
 
 
-router.use("/:notebook/notes/", notesRouter);
+router.use("/:notebook/", notesRouter);
 
 
 module.exports = router;

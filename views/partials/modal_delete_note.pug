@@ -1,0 +1,12 @@
+extends modal 
+
+block content
+    .delete-note-container
+        h2 Are you sure you want to delete this note?
+        .delete-note-options
+            form(
+            method="POST" 
+            action=`/notebooks/${note.notebook_id}/notes/${note.id}/delete`
+            ) 
+                button.default.delete-note(type="submit") Yes
+            button.default(type="button") Cancel

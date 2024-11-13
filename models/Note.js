@@ -35,6 +35,12 @@ class NoteStorage {
         return rows[0];
     }
 
+    async getLastNote() {
+        const { rows } = await this.#pool.query("SELECT * FROM notes ORDER BY id DESC LIMIT 1");
+
+        return !rows.length ? null : rows[0];
+    }
+
     async updateNote(id, {title, content, tags, notebookID}) {
         const formatedTags = this.#formatArray(tags);
 
@@ -55,6 +61,7 @@ class NoteStorage {
     }
 
     #formatArray(arr) {
+        console.log(arr);
         return `{${arr.join(", ")}}`;
     }
 }

@@ -38,7 +38,7 @@ body {
     display: grid;
     grid-template-columns: 250px 1fr;
     grid-template-rows: 100px 1fr;
-    height: 100vh;
+    min-height: 100vh;
 }
 
 header, nav, main, footer {
@@ -51,7 +51,21 @@ header {
     border-bottom: 1px solid var(--border-gray);
     display: flex;
     align-items: center;
-    padding-left: 30px;
+    justify-content: space-between;
+    padding: 0 30px;
+}
+
+header button {
+    display: none;
+    background: none;
+    outline: 0;
+    border: 0;
+    align-items: center;
+}
+
+header button svg {
+    stroke: white;
+    cursor: pointer;
 }
 
 h1 {
@@ -103,7 +117,7 @@ nav .menu > h3:hover {
     text-underline-offset: 3px;
 }
 
-.create-note {
+nav .menu > h3:nth-child(1) {
     margin-top: 15px;
 }
 
@@ -147,6 +161,11 @@ input, textarea {
     outline: none;
 }
 
+input:-webkit-autofill,
+input:-webkit-autofill:focus {
+    transition: background-color 0s 600000s, color 0s 600000s !important;
+}
+
 button.default {
     background: black;
     border: 2px solid var(--main-bluey);
@@ -176,14 +195,79 @@ button.default:hover {
     display: none;
     align-items: center;
     justify-content: center;
+    z-index: 3;
 }
 
 .default-modal .pop-up {
     background: var(--dark-gray);
     padding: 25px;
     border-radius: 10px;
+    margin: 0 25px;
 }
 
 .default-modal.active {
     display: flex;
+}
+
+.success {
+    width: 100%;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    margin-top: 50px;
+}
+
+.success p {
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: center;
+}
+
+.success a {
+    text-decoration: underline;
+    text-underline-offset: 2px;
+}
+
+.errors {
+    margin-top: 15px;
+}
+
+.errors ul {
+    list-style-type: square;
+    list-style-position: inside;
+}
+.errors li {
+    color: crimson;
+}
+
+@media screen and (max-width: 750px) {
+    body {
+        display: flex;
+        flex-flow: column;
+    }
+
+    nav {
+        position: absolute;
+        z-index: 3;
+        height: 100%;
+        left: -500px;
+        transition: left .2s ease-in-out;
+    }
+
+    nav.active {
+        left: 0;
+    }
+
+    main {
+        flex: 1;
+        padding-bottom: 15px;
+    }
+
+    header {
+        height: 60px;
+    }
+
+    header button {
+        display: flex;
+    }
 }
