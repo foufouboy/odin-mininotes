@@ -5,20 +5,9 @@ const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
-const livereload = require("livereload");
-const connectLivereload = require("connect-livereload");
 
 const indexRouter = require('./routes/index');
 const notebooksRouter = require("./routes/notebooks");
-
-const publicDirectory = path.join(__dirname, "public");
-const liveReloadServer = livereload.createServer();
-liveReloadServer.watch(publicDirectory);
-liveReloadServer.server.once("connection", () => {
-  setTimeout(() => {
-    liveReloadServer.refresh("/");
-  }, 100);
-});
 
 const app = express();
 
@@ -26,7 +15,6 @@ const app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
-app.use(connectLivereload({port: 35729}));
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
