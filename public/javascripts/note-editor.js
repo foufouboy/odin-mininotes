@@ -14,7 +14,7 @@ const editor = new EditorJS({
     holder: "editor-container",
     tools: {
         header: Header,
-        list: List,
+        list: EditorjsList,
     },
     onReady: () => {
         console.log("Editor.js is ready!");
