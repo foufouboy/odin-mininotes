@@ -1,6 +1,6 @@
 module.exports = {
     getExcerpt: (content) => {
-        if (content.blocks.length === 0) 
+        if (!content || content.blocks.length === 0) 
             return "Empty note";
 
         const firstBlock = content.blocks[0];

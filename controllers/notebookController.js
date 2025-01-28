@@ -91,6 +91,7 @@ exports.notebookDeletePost = asyncHandler( async (req, res) => {
     res.redirect("/");
 });
 
+
 exports.notebookList = asyncHandler(async (req, res) => {
     const id = req.params.notebook;
     const notebook = await notebookStorage.getNotebook(id);
